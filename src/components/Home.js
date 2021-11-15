@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Footer from './Footer';
-import { movieApi } from '../utils/api';
+// import { movieApi } from '../utils/api';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadMovies, loadMoviesAsync, loadShowsAsync, searchMovieAsync, searchShowAsync } from '../redux/movieSlice';
+// import { loadMovies, loadMoviesAsync, loadShowsAsync, searchMovieAsync, searchShowAsync } from '../redux/movieSlice';
+import { loadMoviesAsync, loadShowsAsync, searchMovieAsync, searchShowAsync } from '../redux/movieSlice';
 
 export default function Home(props) {
 
