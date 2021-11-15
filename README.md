@@ -6,6 +6,6 @@ A Simple Movie App developed using React and Redux Toolkit.
 
 Movies are fetched from OMDb Api.
 
-## [Live Demo]()
+## [Live Demo](https://movie-app-35ff1.web.app/)
 
-`` ``
+``https://movie-app-35ff1.web.app/ ``
