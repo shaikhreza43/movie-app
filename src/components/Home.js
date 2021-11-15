@@ -4,6 +4,7 @@ import Footer from './Footer';
 import { useDispatch, useSelector } from 'react-redux';
 // import { loadMovies, loadMoviesAsync, loadShowsAsync, searchMovieAsync, searchShowAsync } from '../redux/movieSlice';
 import { loadMoviesAsync, loadShowsAsync, searchMovieAsync, searchShowAsync } from '../redux/movieSlice';
+import { Link } from 'react-router-dom';
 
 export default function Home(props) {
 
@@ -59,13 +60,15 @@ export default function Home(props) {
                             {movieList.Response === "True" ?
                                 movieList.Search.map((movie, index) => (
 
-                                    <div key={index} className="card" style={{ width: '10rem', height: 'auto', margin: '10px 20px' }}>
-                                        <img className="card-img-top" src={movie.Poster} alt={movie.Title} />
-                                        <div className="card-body">
-                                            <p className="card-text">{movie.Title}</p>
+                                    <Link to={`/movie/${movie.imdbID}`} className="movie-card-link">
+                                        <div key={index} className="card" style={{ width: '11rem', height: 'auto', margin: '10px 20px' }}>
+                                            <img className="card-img-top" src={movie.Poster} alt={movie.Title} />
+                                            <div className="card-body">
+                                                <p className="card-text"><b>{movie.Title}</b></p>
+                                                <p className="card-text">{movie.Year}</p>
+                                            </div>
                                         </div>
-                                    </div>
-
+                                    </Link>
                                 )) :
                                 (<div><h3>{movieList.Error}</h3></div>)}
                         </div>
@@ -85,10 +88,11 @@ export default function Home(props) {
                         {showList.Response === "True" ?
                             showList.Search.map((show, index) => (
 
-                                <div key={index} className="card" style={{ width: '10rem', height: 'auto', margin: '10px 20px' }}>
+                                <div key={index} className="card" style={{ width: '11rem', height: 'auto', margin: '10px 20px' }}>
                                     <img className="card-img-top" src={show.Poster} alt={show.Title} />
                                     <div className="card-body">
-                                        <p className="card-text">{show.Title}</p>
+                                        <p className="card-text"><b>{show.Title}</b></p>
+                                        <p className="card-text">{show.Year}</p>
                                     </div>
                                 </div>
 

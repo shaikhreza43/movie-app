@@ -28,9 +28,15 @@ export const searchShowAsync = createAsyncThunk("shows/searchShowAsync", async (
         return response.data;
 });
 
+export const loadSelectedMovieOrShowAsync = createAsyncThunk("movies/loadSelectedMovieOrShowAsync", async (payload) => {
+    const response = await axios.get("https://www.omdbapi.com/?i=" + payload.imdbId + "&apikey=7db14e37&plot=full");
+    if (response.status === 200)
+        return response.data;
+})
+
 const movieSlice = createSlice({
     name: "movies",
-    initialState: { movies: {}, shows: {} },
+    initialState: { movies: {}, shows: {}, selectedMovieOrShow: {} },
     reducers: {
         loadMovies: (state, action) => {
             state.movies = action.payload;
@@ -76,6 +82,16 @@ const movieSlice = createSlice({
         },
         [searchShowAsync.rejected]: () => {
             console.log("Show Search Rejected...");
+        },
+        [loadSelectedMovieOrShowAsync.pending]: () => {
+            console.log("Fetching Selected Movies or Shows...");
+        },
+        [loadSelectedMovieOrShowAsync.fulfilled]: (state, action) => {
+            console.log("Fetched Successfully the Selected Item...");
+            state.selectedMovieOrShow = action.payload;
+        },
+        [loadSelectedMovieOrShowAsync.rejected]: () => {
+            console.log("Request Got Rejected...");
         }
     }
 });

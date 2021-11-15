@@ -12,3 +12,8 @@ div.card:hover {
     transform: scale(1.1);
     transition: all 0.3s;
 }
+
+a.movie-card-link {
+    text-decoration: none !important;
+    color: black !important;
+}
