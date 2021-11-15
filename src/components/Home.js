@@ -87,14 +87,15 @@ export default function Home(props) {
 
                         {showList.Response === "True" ?
                             showList.Search.map((show, index) => (
-
-                                <div key={index} className="card" style={{ width: '11rem', height: 'auto', margin: '10px 20px' }}>
-                                    <img className="card-img-top" src={show.Poster} alt={show.Title} />
-                                    <div className="card-body">
-                                        <p className="card-text"><b>{show.Title}</b></p>
-                                        <p className="card-text">{show.Year}</p>
+                                <Link to={`/movie/${show.imdbID}`} className="movie-card-link">
+                                    <div key={index} className="card" style={{ width: '11rem', height: 'auto', margin: '10px 20px' }}>
+                                        <img className="card-img-top" src={show.Poster} alt={show.Title} />
+                                        <div className="card-body">
+                                            <p className="card-text"><b>{show.Title}</b></p>
+                                            <p className="card-text">{show.Year}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
 
                             )) :
                             (<div><h3>{showList.Error}</h3></div>)}
