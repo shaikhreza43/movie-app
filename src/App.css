@@ -5,7 +5,7 @@
 }
 
 div.card {
-    transition: all 0s3s;
+    transition: all 0.3s;
 }
 
 div.card:hover {
